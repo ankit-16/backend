@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
-const Schema = new mongoose.Schema;
 mongoose.Promise = global.Promise;
 const bcrypt = require('bcryptjs');
 
-const adminSchema = new Schema({
+const adminSchema = new mongoose.Schema({
     removed: {
         type: Boolean,
         default: false,
