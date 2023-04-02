@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+const quoteSchem = require('../../models/Quote');
 const Model = mongoose.model('Quote');
 const custom = require('../corsControllers/custom');
 
-const crudController = require('../corsControllers/crudController');
+const crudController = require('../corsControllers/crudControllers');
 const methods = crudController.createCRUDController('Quote');
 
 delete methods['create'];

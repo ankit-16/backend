@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+const invoiceSchema = require('../../models/Invoice');
 const Model = mongoose.model('Invoice');
 const custom = require('../corsControllers/custom');
 const crudController = require('../corsControllers/crudControllers');
-const method = crudController.createCRUDController('Invoice');
+const methods = crudController.createCRUDController('Invoice');
 
 delete methods['create'];
 delete methods['update'];

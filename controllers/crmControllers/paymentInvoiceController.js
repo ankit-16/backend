@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const invoiceSchema = require('../../models/PaymentInvoice');
 const Model = mongoose.model('PaymentInvoice');
 const Invoice = mongoose.model('Invoice');
 const custom = require('../corsControllers/custom');
