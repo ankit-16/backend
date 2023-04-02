@@ -3,8 +3,11 @@ const glob = require('glob');
 const path = require('path');
 const app = require('./app');
 
+require("dotenv").config({ path: ".env" });
+
+
 //connection to database
-mongoose.connect('mongodb://localhost:27017/crm');
+mongoose.connect(process.env.DATABASE);
 mongoose.Promise = global.Promise;
 mongoose.connection.on('error', (err) => {
     console.error(`Error -> ${err.message}`);
@@ -17,7 +20,7 @@ glob.sync('./models/**/*.js').forEach(function (file) {
 });
 
 //start our server
-app.set('port', 3001);
+app.set('port', process.env.PORT || 80);
 const server = app.listen(app.get('port'), () => {
     console.log(`Server is running on PORT : ${server.address().port}`);
 })
