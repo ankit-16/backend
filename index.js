@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
-require('module-alias/register');
 const glob = require('glob');
 const path = require('path');
-const server = require('./app');
+const app = require('./app');
 
 //connection to database
 mongoose.connect('mongodb://localhost:27017/crm');
@@ -18,6 +17,7 @@ glob.sync('./models/**/*.js').forEach(function (file) {
 });
 
 //start our server
+app.set('port', 3001);
 const server = app.listen(app.get('port'), () => {
     console.log(`Server is running on PORT : ${server.address().port}`);
 })

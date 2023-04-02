@@ -22,7 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //or to highlight the active page in a navigation menu.
 
 app.use((req, res, next) => {
-    res.locals.h = helpers;
+    //res.locals.h = helpers;
     res.locals.admin = req.admin || null;
     res.locals.currentPath = req.path;
     next();

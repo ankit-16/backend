@@ -1,6 +1,7 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const mongoose = require('mongoose');
+const AdminSchema = require('../../models/Admin');
 const Admin = mongoose.model('Admin');
 
 
