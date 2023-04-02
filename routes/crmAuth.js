@@ -8,7 +8,7 @@ const {
   login,
   logout,
 } = require('../controllers/crmControllers/authJwtController');
-router.route('/');
+
 router.route('/login').post(catchErrors(login));
 router.route('/logout').post(isValidAdminToken, catchErrors(logout));
 
