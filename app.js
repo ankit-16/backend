@@ -32,6 +32,22 @@ app.use((req, res, next) => {
     next();
 });
 
+
+app.use(cors({
+  origin: true,
+  credentials: true,
+  exposedHeaders: ["Content-Length"],
+  allowedHeaders: [
+    "Accept",
+    "Authorization",
+    "x-auth-token",
+    "Content-Type",
+    "X-Requested-With",
+    "Range"
+  ],
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE"]
+}));
+
 app.use(
     '/api', 
     cors({
