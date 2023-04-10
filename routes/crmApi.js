@@ -12,16 +12,9 @@ const employeeController = require('../controllers/crmControllers/employeeContro
 const paymentModeController = require('../controllers/crmControllers/paymentModeController');
 const clientController = require('../controllers/crmControllers/clientController');
 const invoiceController = require('../controllers/crmControllers/invoiceController');
-const itemController = require('../controllers/crmControllers/itemController');
 const quoteController = require('../controllers/crmControllers/quoteController');
-const supplierController = require('../controllers/crmControllers/supplierController');
-const orderFormController = require('../controllers/crmControllers/orderFormController');
-const expenseController = require('../controllers/crmControllers/expenseController');
-const expenseCategoryController = require('../controllers/crmControllers/expenseCategoryController');
 const paymentInvoiceController = require('../controllers/crmControllers/paymentInvoiceController');
 
-const settingGlobalController = require('../controllers/crmControllers/settingGlobalController');
-const settingCommercialController = require('../controllers/crmControllers/settingCommercialController');
 
 
 // //_______________________________ Admin management_______________________________
@@ -44,6 +37,7 @@ router.route('/admin/search').get(catchErrors(adminController.search));
 router.route('/admin/list').get(catchErrors(adminController.list));
 router.route('/admin/profile').get(catchErrors(adminController.profile));
 router.route('/admin/status/:id').patch(catchErrors(adminController.status));
+router.route('/admin/delete/:id').patch(catchErrors(adminController.delete));
 
 // //____________________________ Role management_______________________________
 
@@ -93,14 +87,7 @@ router.route('/invoice/filter').get(catchErrors(invoiceController.filter));
 
 router.route('/invoice/pdf/:id').get(catchErrors(invoiceController.generatePDF));
 
-// //_________________________________________________________________API for items_____________________
-router.route('/item/create').post(catchErrors(itemController.create));
-router.route('/item/read/:id').get(catchErrors(itemController.read));
-router.route('/item/update/:id').patch(catchErrors(itemController.update));
-router.route('/item/delete/:id').delete(catchErrors(itemController.delete));
-router.route('/item/search').get(catchErrors(itemController.search));
-router.route('/item/list').get(catchErrors(itemController.list));
-router.route('/item/filter').get(catchErrors(itemController.filter));
+
 
 // //_________________________________________________________________API for Quotes_____________________
 
@@ -113,46 +100,6 @@ router.route('/quote/list').get(catchErrors(quoteController.list));
 router.route('/quote/filter').get(catchErrors(quoteController.filter));
 router.route('/quote/pdf/:id').get(catchErrors(quoteController.generatePDF));
 
-// //___________________________________________ API for suppliers _____________________
-router.route('/supplier/create').post(catchErrors(supplierController.create));
-router.route('/supplier/read/:id').get(catchErrors(supplierController.read));
-router.route('/supplier/update/:id').patch(catchErrors(supplierController.update));
-router.route('/supplier/delete/:id').delete(catchErrors(supplierController.delete));
-router.route('/supplier/search').get(catchErrors(supplierController.search));
-router.route('/supplier/list').get(catchErrors(supplierController.list));
-router.route('/supplier/filter').get(catchErrors(supplierController.filter));
-
-// //_________________________________________ API for order Forms _____________________
-
-router.route('/orderForm/create').post(catchErrors(orderFormController.create));
-router.route('/orderForm/read/:id').get(catchErrors(orderFormController.read));
-router.route('/orderForm/update/:id').patch(catchErrors(orderFormController.update));
-router.route('/orderForm/delete/:id').delete(catchErrors(orderFormController.delete));
-router.route('/orderForm/search').get(catchErrors(orderFormController.search));
-router.route('/orderForm/list').get(catchErrors(orderFormController.list));
-router.route('/orderForm/filter').get(catchErrors(orderFormController.filter));
-
-router.route('/orderForm/pdf/:id').get(catchErrors(orderFormController.generatePDF));
-
-// //_________________________________________________________________API for expenses_____________________
-
-router.route('/expense/create').post(catchErrors(expenseController.create));
-router.route('/expense/read/:id').get(catchErrors(expenseController.read));
-router.route('/expense/update/:id').patch(catchErrors(expenseController.update));
-router.route('/expense/delete/:id').delete(catchErrors(expenseController.delete));
-router.route('/expense/search').get(catchErrors(expenseController.search));
-router.route('/expense/list').get(catchErrors(expenseController.list));
-router.route('/expense/filter').get(catchErrors(expenseController.filter));
-
-// //_________________________________________________________________API for expense categories________________
-
-router.route('/expenseCategory/create').post(catchErrors(expenseCategoryController.create));
-router.route('/expenseCategory/read/:id').get(catchErrors(expenseCategoryController.read));
-router.route('/expenseCategory/update/:id').patch(catchErrors(expenseCategoryController.update));
-router.route('/expenseCategory/delete/:id').delete(catchErrors(expenseCategoryController.delete));
-router.route('/expenseCategory/search').get(catchErrors(expenseCategoryController.search));
-router.route('/expenseCategory/list').get(catchErrors(expenseCategoryController.list));
-router.route('/expenseCategory/filter').get(catchErrors(expenseCategoryController.filter));
 
 // //_____________________________________________ API for client payments_________________
 
@@ -165,28 +112,5 @@ router.route('/paymentInvoice/list').get(catchErrors(paymentInvoiceController.li
 router.route('/paymentInvoice/filter').get(catchErrors(paymentInvoiceController.filter));
 router.route('/paymentInvoice/pdf/:id').get(catchErrors(paymentInvoiceController.generatePDF));
 
-// //____________________________________________ API for Global Setting _________________
-
-router.route('/settingGlobal/create').post(catchErrors(settingGlobalController.create));
-router.route('/settingGlobal/read/:id').get(catchErrors(settingGlobalController.read));
-router.route('/settingGlobal/update/:id').patch(catchErrors(settingGlobalController.update));
-router.route('/settingGlobal/delete/:id').delete(catchErrors(settingGlobalController.delete));
-router.route('/settingGlobal/search').get(catchErrors(settingGlobalController.search));
-router.route('/settingGlobal/list').get(catchErrors(settingGlobalController.list));
-router.route('/settingGlobal/filter').get(catchErrors(settingGlobalController.filter));
-
-// //______________________________________________ API for Commercial Setting _________________
-
-router.route('/settingCommercial/create').post(catchErrors(settingCommercialController.create));
-router.route('/settingCommercial/read/:id').get(catchErrors(settingCommercialController.read));
-router
-  .route('/settingCommercial/update/:id')
-  .patch(catchErrors(settingCommercialController.update));
-router
-  .route('/settingCommercial/delete/:id')
-  .delete(catchErrors(settingCommercialController.delete));
-router.route('/settingCommercial/search').get(catchErrors(settingCommercialController.search));
-router.route('/settingCommercial/list').get(catchErrors(settingCommercialController.list));
-router.route('/settingCommercial/filter').get(catchErrors(settingCommercialController.filter));
 
 module.exports = router;
