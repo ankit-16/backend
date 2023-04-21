@@ -37,8 +37,9 @@ router.route('/admin/search').get(catchErrors(adminController.search));
 router.route('/admin/list').get(catchErrors(adminController.list));
 router.route('/admin/profile').get(catchErrors(adminController.profile));
 router.route('/admin/status/:id').patch(catchErrors(adminController.status));
-router.route('/admin/delete/:id').patch(catchErrors(adminController.delete));
-
+router.route('/admin/update/:id').patch(catchErrors(adminController.update));
+router.route('/admin/password-update/:id').patch(catchErrors(adminController.updatePassword));
+router.route('/admin/delete/:id').delete(catchErrors(adminController.delete));
 // //____________________________ Role management_______________________________
 
 router.route('/role/create').post(catchErrors(roleController.create));
